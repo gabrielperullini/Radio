@@ -1,0 +1,26 @@
+WEBSITE
+=======
+
+http://liip.to/radios
+
+INSTALL
+=======
+
+
+- get and install chregu's fork of Phonegap at http://github.com/chregu/phonegap-iphone with
+    
+    git clone git://github.com/chregu/phonegap-iphone.git
+    cd phonegap-iphone
+    make
+    open  PhoneGapLibInstaller.pkg
+
+- Make sure PHONEGAPLIB points to this (Preferences ... -> Source Trees)
+- try to compile this project
+- open the radioapp xcode project
+- change the target to "radioapp-iPad"
+- build & run
+
+LICENSE
+=======
+
+This project is licensed under the MIT license, see the LICENSE file for more details.

@@ -1,0 +1,483 @@
+html {
+	height: 100%;
+	-webkit-backface-visibility: visible;
+}
+
+* {
+	-webkit-backface-visibility: hidden;
+	-webkit-user-select: none;
+}
+
+body {
+	background-color: #333;
+	color: #000;
+	font-family: Helvetica;
+	font-size: 100%;
+	line-height: 1.5em;
+	margin: 0;
+
+	/* Give some depth to the card */
+	-webkit-perspective: 600;
+	height: 100%;
+}
+
+#card {
+	width: 100%;
+	height: 100%;
+	/* Ensure that the card lives correctly in 3D space */
+	-webkit-transform-style: preserve-3d;
+
+	/* We apply this property to the card so it can smoothly flip between its sides */
+	-webkit-transition-property: -webkit-transform;
+	/* Make the animation occur over a period of 1.5 seconds */
+	-webkit-transition-duration: 1.5s;
+	-webkit-backface-visibility: visible !important;
+}
+
+#main {
+	background-color: #fef4b4;
+	background-image: url('images/background.png'), -webkit-gradient(radial, 300 90, 0, 300 90, 460, from(#ebebec), to(#fef4b4), color-stop(0%, rgba(255, 255, 255, 0.6)));
+	background-repeat: repeat-y, no-repeat;
+}
+
+#header {
+	height: 82px;
+	background-image: url('images/header.png');
+	position: relative;
+}
+
+#header #logo {
+	margin: 0;
+	color: white;
+	content: url('images/logo.png'), contents;
+	width: 280px;
+	height: 82px;
+}
+
+#header #mic {
+	position: absolute;
+	-webkit-backface-visibility: hidden;
+	content: url('images/mic.png'), contents;
+	width: 256px;
+	height: 256px;
+	top: 0;
+	left: 150px;
+	z-index: 900;
+}
+
+#header #now_container {
+	position: absolute;
+	top: 43px;
+	left: 350px;
+	color: white;
+	font-style: italic;
+	width: 50%;
+	margin-right: 300px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#collage {
+	position: absolute;
+	background-image: url('images/Slideshow.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	bottom: 0;
+	right: 0;
+	width: 80px;
+	height: 110px;
+	opacity: 0.9;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	z-index: 1000;
+	opacity: 1.0;
+	-webkit-backface-visibility: hidden;
+}
+
+#collage:active {
+	background-image: url('images/Slideshow.png'), -webkit-gradient(radial, 45 50, 50, 45 50, 5, from(rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 1)));
+}
+
+#mute {
+	position: absolute;
+	background-image: url('images/pause.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	top: 0;
+	right: 0;
+	width: 90px;
+	height: 85px;
+	opacity: 0.7;
+	z-index: 1000;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-backface-visibility: hidden;
+}
+
+
+#mute:active {
+	background-image: url('images/pause.png'), -webkit-gradient(radial, 50 40, 50, 50 40, 5, from(rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 1)));
+}
+
+#mute.muted {
+	opacity: 0.3;
+}
+
+#collage.hidden {
+	opacity: 0;
+}
+
+#sidebar {
+	position: absolute;
+	width: 280px;
+	left: 0;
+	z-index: 3;
+	bottom:0;
+	top: 82px;
+}
+
+#search {
+	background-image: url('images/search.png');
+	height: 43px;
+}
+
+#search input {
+	border: 0;
+	width: 180px;
+	font-size: 11pt;
+	height: 24px;
+	margin-top: 10px;
+	margin-left: 28px;
+	-webkit-user-select: auto;
+}
+
+ul {
+	font-size: 20px;
+	font-family: Helvetica;
+	font-weight: bold;
+	color: black;
+	margin: 0;
+	padding: 0;
+	width: 280px;
+	background-color: white;
+}
+
+
+li {
+	list-style-type: none;
+	border-top-width: 1px;
+	border-top-color: rgb(217,217,217);
+	border-top-style: solid;
+	padding-top: 13px;
+	padding-right: 10px;
+	padding-bottom: 14px;
+	padding-left: 10px;
+	height: 19px;
+	line-height: 19px;
+	-webkit-tap-highlight-color: rgba(21,100,167,0.2);
+}
+
+
+li:first-child {
+	border-top: 0;
+}
+
+.playing {
+	float: left;
+	margin-right: 5px;
+
+	margin-top: 2px;
+	content: url('images/playing.png'), contents;
+}
+
+#wrapper {
+	position: absolute;
+	left: 0;
+	right: 0;
+	width: 100%;
+	top: 82px;
+	bottom: 0;
+	z-index: 2;
+}
+
+#content {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	z-index: 1;
+	position: relative;
+}
+
+#scroll {
+	overflow: hidden;
+	position: relative;
+	min-height: 300px;
+}
+
+#stations {
+	width: 100%;
+
+	overflow: hidden;
+	z-index: 1;
+	position: relative;
+}
+
+#scrollStations {
+	overflow: hidden;
+	position: relative;
+	min-height: 300px;
+}
+
+
+#title {
+	background-color: rgba(255, 255, 255, 0.85);
+	background-image: url('images/shadow.png');
+	background-repeat: repeat-y;
+	margin-left: 280px;
+	margin-top: 195px;
+	height: 60px;
+	padding: 10px 0 5px 70px;
+	border-bottom: 1px solid #dddddd;
+	position: relative;
+	z-index: 999999999;
+	line-height: 2em;
+}
+
+#title div {
+	opacity: 1;
+	-webkit-transition-property: opacity;
+	-webkit-transition-duration: 2s;
+}
+
+#title div.hidden {
+	opacity: 0;
+}
+
+#title div {
+	position: absolute;
+	height: 60px;
+	width: 90%;
+}
+
+#title h1 {
+	font-weight: normal;
+	font-size: 26px;
+	letter-spacing: -0.5px;
+	margin: 0;
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	position: absolute;
+	top: 1px;
+	-webkit-user-select: text;
+}
+
+#title h2 {
+	font-weight: normal;
+	font-size: 19px;
+	letter-spacing: -0.5px;
+	margin: 0;
+	width: 90%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	position: absolute;
+	top: 28px;
+	color: #999;
+	-webkit-user-select: text;
+}
+
+#title h2.notrack {
+	color: #DDD;
+}
+
+#image {
+	text-align: right;
+	margin-left: 350px;
+	height: 207px;
+	position: absolute;
+	top: 71px;
+	right: 20px;
+	z-index: 1;
+}
+
+#image img {
+	position: absolute;
+	right: 30px;
+	opacity: 1.0;
+	-webkit-transition-property: opacity;
+	-webkit-transition-duration: 2s;
+}
+
+#image img.hidden {
+	opacity: 0;
+}
+
+#bio {
+	font-size: 14px;
+	line-height: 1.5em;
+	margin-top: 27px;
+	margin-left: 350px;
+	padding-right: 60px;
+}
+
+#bio div {
+	margin-bottom: 0;
+	-webkit-user-select: text;
+}
+
+#bio img {
+	vertical-align: sub;
+}
+
+#artist_bio {
+}
+
+#artist_bio div {
+	opacity: 1.0;
+	-webkit-transition-property: opacity;
+	-webkit-transition-duration: 2s;
+	-webkit-backface-visibility: hidden;
+	margin-bottom: 0;
+}
+
+#artist_bio div.hidden {
+	opacity: 0;
+}
+
+.lastfm {
+	font-size: 14px;
+	line-height: 1.5em;
+	padding-bottom: 35px;
+	opacity: 1.0;
+	-webkit-transition-property: opacity;
+	-webkit-transition-duration: 2s;
+}
+
+.lastfm img {
+	vertical-align: sub;
+}
+
+.lastfm.hidden {
+	opacity: 0;
+}
+
+
+
+/* Applies the flip animation to the card */
+#card.flipped
+{
+
+	/* Rotate the card 180 degrees along the y-axis. This animation allows the card to
+	toggle between its regular and flipped states. */
+	-webkit-transform: rotateY(180deg);
+}
+
+
+/* Styles the card and hides its "back side" when the card is flipped */
+.face
+{
+	position: absolute;
+	left:0;
+	top:0;
+	width: 100%;
+	height: 100%;
+	/* Make sure that users will not be able to select anything on the card */
+
+	/* We create the card by stacking two div elements at the exact same location. The back of the card
+	is shown when we rotated the card 180 degrees along the y-axis. Setting this property to hidden
+	ensures that the "back side" is hidden when the card is flipped
+	*/
+}
+
+.front
+{
+}
+
+
+/* Styles the back of the card */
+.back
+{
+	/* Ensure the "back side" is flipped already */
+	-webkit-transform: rotateY(180deg);
+}
+#artistsong {
+	display: none;
+}
+
+@media screen and (max-device-width: 480px) {
+	ul {
+		width: 320px;
+	}
+
+	#header #mic {
+		left: 135px;
+	}
+
+	#mute {
+		right: 75px;
+		top: 6px;
+		left: 140px;
+		width: 90px;
+		height: 85px;
+
+		/*   display: none;*/
+	}
+
+	#main {
+		background-image: none;
+		background-color: #ffffff;
+	}
+
+	#stations {
+		height: 380px;
+	}
+
+	#wrapper {
+		display: none;
+	}
+
+	#artistsonginfo {
+		height: 40px;
+		padding-left: 110px;
+		padding-top: 12px;
+		margin-left: -100px;
+		background-image: -webkit-gradient(radial, 300 90, 0, 300 90, 460,  color-stop(0%, rgba(255, 255, 255, 0.5)), color-stop(100%, rgba(100, 100, 100, 0.5)))
+	}
+
+	#artistsonginfo {
+		text-wrap: none;
+		width: 800px;
+	}
+
+	#collage {
+		bottom: 70px;
+		display: block;
+		height: 50px;
+
+	}
+	#sidebar {
+		width: 320px;
+	}
+}
+
+
+/* ipad */
+@media screen and (orientation: landscape) and (min-device-width: 481px) and (max-device-width: 1024px)  {
+	#stations {
+		height: 668px;
+	}
+}
+
+/* ipad */
+@media screen and (orientation: portrait) and  (min-device-width: 481px) and (max-device-width: 1024px) {
+	#stations {
+		height: 924px;
+	}
+}
+/* iphone 5 */
+@media screen and (orientation: portrait) and (device-aspect-ratio: 40/71) {
+	#stations {
+		height: 468px;
+	}
+}

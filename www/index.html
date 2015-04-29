@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="user-scalable=no, width=device-width">
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <title>Radios</title>
+        <link rel="stylesheet" href="master.css" type="text/css" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="screensaver.css" type="text/css" media="screen" title="no title" charset="utf-8">
+
+          <script type="text/javascript" src="js/json2-min.js"></script>
+
+        <script type="text/javascript" src="iscroll-min.js" charset="utf-8"></script>
+
+        <script type="text/javascript" src="cordova-2.5.0.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/AudioStream.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/lastfm.api.md5.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/lastfm.api.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/lastfm.api.cache.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/radioapp.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/radioapp.db.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/screensaver.js"></script>
+
+
+    </head>
+    <body onload="onWinLoad()" ontouchmove="touchMove(event)" id="stage" class="theme">
+        <div id="card" class="card">
+
+            <div id="main" class="face front">
+                <div id="header">
+                    <h1 id="logo">Radios</h1>
+                    <h2 id="mic">App</h2>
+                    <div id="now_container">
+                        <span id="now_station">
+                        </span>
+                        <span id="now_playing">
+                        </span>
+                    </div>
+                    <div id="mute" ontouchend="toggleSound()"> </div>
+                </div>
+                <div id="collage" onclick="initScreensaver()" class="hidden"> </div>
+
+                <div id="sidebar">
+                    <div id="stations" >
+                    <div id="scrollStations">
+                    </div>
+                    </div>
+ <div class="box" id="artistsonginfo">
+                    <div id="artistsong">ARTIST SONG</div>
+                </div>
+                </div>
+
+
+                <div id="wrapper">
+                    <div id="content">
+                        <div id="scroll">
+                            <div id="image">
+                                <img />
+                            </div>
+                            <div id="title">
+                                <div>
+                                    <h1></h1>
+                                    <h2></h2>
+                                </div>
+                            </div>
+                            <div id="bio">
+                                <div id="artist_bio">
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="screensaver" ontouchend="initScreensaver();" class="face back">
+                <div class="box" id="radioname">
+                    <h1 id="station_name">RADIOSENDER</h1>
+                </div>
+                <div class="box" id="songinfo">
+                    <h1 id="artist">ARTIST</h1>
+                    <h2 id="song">SONG</h2>
+                </div>
+                <div id="imgContainer">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
